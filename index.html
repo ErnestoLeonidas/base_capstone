@@ -4,65 +4,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Auditor CAPSTONE APT122</title>
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="Bot/styles.css">
   </head>
   <body>
-    <main class="app-shell">
-      <section class="intro">
-        <p class="eyebrow">CAPSTONE APT122</p>
-        <h1>Auditor de estructura de evidencias</h1>
-        <p class="lede">
-          Revisa repositorios de grupos contra la estructura base de este repositorio y genera un reporte de cambios necesarios.
-        </p>
-      </section>
-
-      <section class="panel" aria-labelledby="base-title">
-        <div class="panel-header">
-          <div>
-            <p class="eyebrow">Repositorio base</p>
-            <h2 id="base-title">Estado de la referencia</h2>
-          </div>
-          <span class="status-pill" id="base-status">Cargando</span>
-        </div>
-        <div class="summary-grid" id="base-summary"></div>
-      </section>
-
-      <section class="panel" aria-labelledby="audit-title">
-        <div class="panel-header">
-          <div>
-            <p class="eyebrow">Repositorio a revisar</p>
-            <h2 id="audit-title">Ingresar repositorio GitHub</h2>
-          </div>
-        </div>
-
+    <main>
+      <section class="audit-box" aria-label="Auditor CAPSTONE APT122">
         <form class="audit-form" id="audit-form">
           <label>
-            URL del repositorio
-            <input id="repo-url" name="repo-url" type="url" placeholder="https://github.com/usuario/repositorio" required>
+            <span class="sr-only">URL del repositorio GitHub</span>
+            <input
+              id="repo-url"
+              name="repo-url"
+              type="url"
+              placeholder="https://github.com/usuario/repositorio"
+              required
+            >
           </label>
-          <label>
-            Token GitHub opcional
-            <input id="github-token" name="github-token" type="password" autocomplete="off" placeholder="Solo para repos privados o límite de API">
-          </label>
-          <button type="submit">Revisar repositorio</button>
+          <button class="sr-only" type="submit">Revisar</button>
         </form>
-
         <p class="message" id="message" role="status"></p>
       </section>
 
-      <section class="panel report-panel" aria-labelledby="report-title">
-        <div class="panel-header">
-          <div>
-            <p class="eyebrow">Reporte</p>
-            <h2 id="report-title">Cambios necesarios</h2>
-          </div>
-          <span class="status-pill" id="report-status">Sin revisión</span>
-        </div>
-        <div class="summary-grid" id="report-summary"></div>
-        <div class="report-sections" id="report-sections"></div>
-      </section>
+      <section class="report" id="report" aria-live="polite" hidden></section>
     </main>
 
-    <script type="module" src="assets/app.js"></script>
+    <script type="module" src="Bot/app.mjs"></script>
   </body>
 </html>

@@ -7,14 +7,6 @@
   ],
   "tree": [
     {
-      "path": "README.md",
-      "type": "file"
-    },
-    {
-      "path": ".gitignore",
-      "type": "file"
-    },
-    {
       "path": "Fase 1",
       "type": "directory",
       "children": [
@@ -41,23 +33,19 @@
           "type": "directory",
           "children": [
             {
-              "path": "Presentación idea de proyecto",
-              "type": "file"
-            },
-            {
               "path": "1.4_APT122_FormativaFase1.docx",
               "type": "file"
             },
             {
-              "path": "1.5_GuiaEstudiante_Fase 1_Definicion Proyecto APT (Español)",
-              "type": "file"
-            },
-            {
-              "path": "1.5_GuiaEstudiante_Fase 1_Definicion Proyecto APT (Inglés)",
+              "path": "1.5_GuiaEstudiante_Fase 1_Definicion Proyecto APT.docx",
               "type": "file"
             },
             {
               "path": "PLANILLA DE EVALUACIÓN FASE 1.xlsx",
+              "type": "file"
+            },
+            {
+              "path": "Presentación idea de proyecto.pptx",
               "type": "file"
             }
           ]
@@ -83,11 +71,11 @@
           "type": "directory",
           "children": [
             {
-              "path": "2.4_GuiaEstudiante_Fase 2_DesarrolloProyecto APT.docx (Español)",
+              "path": "2.4_GuiaEstudiante_Fase 2_DesarrolloProyecto APT.docx",
               "type": "file"
             },
             {
-              "path": "2.4_GuiaEstudiante_Fase 2_DesarrolloProyecto APT.docx (Inglés)",
+              "path": "2.6_GuiaEstudiante_Fase 2_Informe Final Proyecto APT.docx",
               "type": "file"
             },
             {
@@ -95,25 +83,7 @@
               "type": "file"
             },
             {
-              "path": "2.6_GuiaEstudiante_Fase 2_Informe Final Proyecto APT.docx (Español)",
-              "type": "file"
-            },
-            {
-              "path": "2.6_GuiaEstudiante_Fase 2_Informe Final Proyecto APT.docx (Inglés)",
-              "type": "file"
-            },
-            {
               "path": "PLANILLA DE EVALUACIÓN FINAL FASE 2.xlsx",
-              "type": "file"
-            }
-          ]
-        },
-        {
-          "path": "Evidencias Proyecto",
-          "type": "directory",
-          "children": [
-            {
-              "path": "Presentación Proyecto",
               "type": "file"
             }
           ]
@@ -182,16 +152,56 @@
               "type": "file"
             },
             {
-              "path": "Presentación Final del proyecto (Español)",
+              "path": "Presentación Final del proyecto.pptx",
               "type": "file"
-            },
+            }
+          ]
+        },
+        {
+          "path": "Evidencias Proyecto",
+          "type": "directory",
+          "children": [
             {
-              "path": "Presentación Final del proyecto (Inglés)",
+              "path": "Presentación Proyecto.pptx",
               "type": "file"
             }
           ]
         }
       ]
+    },
+    {
+      "path": "Bot",
+      "type": "directory",
+      "children": [
+        {
+          "path": "app.mjs",
+          "type": "file"
+        },
+        {
+          "path": "auditor.mjs",
+          "type": "file"
+        },
+        {
+          "path": "auditor.test.mjs",
+          "type": "file"
+        },
+        {
+          "path": "styles.css",
+          "type": "file"
+        }
+      ]
+    },
+    {
+      "path": "README.md",
+      "type": "file"
+    },
+    {
+      "path": "index.html",
+      "type": "file"
+    },
+    {
+      "path": "index.json",
+      "type": "file"
     }
   ]
 }

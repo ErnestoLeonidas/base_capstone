@@ -1,43 +1,36 @@
-# Proyecto CAPSTONE APT122
+# CAPSTONE APT122
 
-## Nombre del proyecto
+Repositorio base para ordenar las evidencias del proyecto CAPSTONE APT122.
 
-Indicar el nombre del proyecto del grupo.
+## GitHub Pages
 
-## Integrantes
+Auditor disponible en:
 
-Indicar los nombres de los integrantes del grupo.
+https://ernestoleonidas.github.io/base_capstone/
 
-## Descripción del proyecto
+## Uso del auditor
 
-Describir brevemente el problema, la solución propuesta y el alcance del proyecto.
+1. Abrir la GitHub Page.
+2. Pegar la URL del repositorio GitHub del grupo.
+3. Presionar `Revisar`.
+4. Corregir los archivos o carpetas marcados como faltantes, incorrectos o fuera de estructura.
 
-## Tecnologías utilizadas
+El auditor revisa repositorios publicos de GitHub usando la estructura definida en `index.json`.
 
-Indicar los lenguajes, frameworks, librerías, motores de base de datos, herramientas y servicios utilizados.
+## Estructura esperada
 
-## Instrucciones para ejecutar el proyecto
+La raiz del repositorio debe contener solamente:
 
-Indicar los pasos necesarios para instalar dependencias, configurar variables de entorno, preparar la base de datos y ejecutar el sistema.
+- `Fase 1`
+- `Fase 2`
+- `Fase 3`
+- `Bot`
+- `README.md`
+- `index.html`
+- `index.json`
 
-Para revisar la GitHub Page de auditoría en local, ejecutar un servidor estático en la raíz del repositorio y abrir `index.html`.
+`Bot` contiene todo lo relacionado con el sistema que revisa la estructura de GitHub de los estudiantes. Las fases contienen las evidencias que debe completar cada grupo.
 
-## Estructura de evidencias
+## Trabajo de los estudiantes
 
-El repositorio organiza las evidencias por fase:
-
-- Fase 1: evidencias individuales y grupales asociadas a la definición del proyecto.
-- Fase 2: evidencias individuales, grupales, del proyecto, de documentación y de sistema.
-- Fase 3: evidencias individuales y grupales asociadas al cierre y presentación final del proyecto.
-
-Los documentos optativos en inglés se mantienen dentro de la estructura base para que cada grupo pueda completarlos cuando corresponda.
-
-## Instrucciones para clonar el repositorio
-
-Clonar este repositorio desde GitHub en el equipo de trabajo y utilizarlo como base para registrar el avance del grupo durante el semestre.
-
-Para activar GitHub Pages, ingresar en GitHub a `Settings`, luego `Pages`, seleccionar la rama principal y la carpeta raíz del repositorio como fuente de publicación.
-
-## Recomendación de trabajo con Git
-
-Realizar commits frecuentes y descriptivos, indicando claramente qué evidencia, documento o componente del proyecto fue actualizado.
+Cada grupo debe mantener los nombres y ubicaciones de las carpetas y archivos base. Los documentos de evidencia se completan o reemplazan manteniendo el mismo nombre cuando corresponda.

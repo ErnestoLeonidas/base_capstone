@@ -70,7 +70,7 @@ export function auditRepository(expectedEntries, actualEntries, options = {}) {
   const expectedRequiredCount = normalizedExpected.filter((entry) => entry.required).length;
   const compliance = expectedRequiredCount === 0
     ? 100
-    : Math.round(((correct.length - typeMismatches.length) / expectedRequiredCount) * 100);
+    : Math.round((correct.length / expectedRequiredCount) * 100);
 
   return {
     summary: {
