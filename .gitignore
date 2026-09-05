@@ -1,0 +1,53 @@
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.swo
+~$*
+.DS_Store
+Thumbs.db
+
+# Configuraciones del IDE y editor
+.idea/
+.vscode/
+*.code-workspace
+
+# Variables de entorno, credenciales y secretos
+.env
+.env.*
+*.pem
+*.key
+*.crt
+credentials/
+secrets/
+
+# Dependencias
+node_modules/
+vendor/
+.venv/
+venv/
+env/
+
+# Archivos compilados
+dist/
+build/
+out/
+target/
+bin/
+obj/
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Archivos generados automaticamente
+coverage/
+.cache/
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pyo
+*.generated.*
