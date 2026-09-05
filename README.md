@@ -20,6 +20,8 @@ Indicar los lenguajes, frameworks, librerías, motores de base de datos, herrami
 
 Indicar los pasos necesarios para instalar dependencias, configurar variables de entorno, preparar la base de datos y ejecutar el sistema.
 
+Para revisar la GitHub Page de auditoría en local, ejecutar un servidor estático en la raíz del repositorio y abrir `index.html`.
+
 ## Estructura de evidencias
 
 El repositorio organiza las evidencias por fase:
@@ -33,6 +35,8 @@ Los documentos optativos en inglés se mantienen dentro de la estructura base pa
 ## Instrucciones para clonar el repositorio
 
 Clonar este repositorio desde GitHub en el equipo de trabajo y utilizarlo como base para registrar el avance del grupo durante el semestre.
+
+Para activar GitHub Pages, ingresar en GitHub a `Settings`, luego `Pages`, seleccionar la rama principal y la carpeta raíz del repositorio como fuente de publicación.
 
 ## Recomendación de trabajo con Git
 
