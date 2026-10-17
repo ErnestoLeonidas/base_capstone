@@ -24,12 +24,7 @@ La raiz del repositorio debe contener solamente:
 - `Fase 1`
 - `Fase 2`
 - `Fase 3`
-- `Bot`
 - `README.md`
-- `index.html`
-- `index.json`
-
-`Bot` contiene todo lo relacionado con el sistema que revisa la estructura de GitHub de los estudiantes. Las fases contienen las evidencias que debe completar cada grupo.
 
 ## Trabajo de los estudiantes
 
