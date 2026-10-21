@@ -1,9 +1,123 @@
 {
   "name": "Estructura base CAPSTONE APT122",
+  "groups": [
+    {
+      "id": 1,
+      "repository": "https://github.com/ocielescobar/Capstone.OE.ST.git",
+      "participants": [
+        { "id": 1, "lastNames": "ESCOBAR FERRADA", "firstNames": "OCIEL ANDRES", "username": "oci.escobar" },
+        { "id": 2, "lastNames": "TORRES RIOS", "firstNames": "SEBASTIAN MARCO", "username": "sm.torres" }
+      ]
+    },
+    {
+      "id": 2,
+      "repository": "https://github.com/jpablo14/HHPROJECT",
+      "participants": [
+        { "id": 3, "lastNames": "SALAZAR TOLEDO", "firstNames": "DAVID EMANUEL", "username": "davi.salazar" },
+        { "id": 4, "lastNames": "RAMIREZ JARA", "firstNames": "JUAN PABLO", "username": "ju.ramirezj" }
+      ]
+    },
+    {
+      "id": 3,
+      "repository": "https://github.com/Benllis/proyecto-titulo-final-docs",
+      "participants": [
+        { "id": 5, "lastNames": "MORALES MADRID", "firstNames": "BENJAMIN IGNACIO", "username": "bi.morales" },
+        { "id": 6, "lastNames": "NAVARRO INOSTROZA", "firstNames": "NICOLAS IGNACIO", "username": "ni.navarroi" }
+      ]
+    },
+    {
+      "id": 4,
+      "repository": "https://github.com/CodesJosh/DocumentosFinales",
+      "participants": [
+        { "id": 7, "lastNames": "CAVIERES NUNEZ", "firstNames": "AGUSTIN ANDRES", "username": "ag.cavieres" },
+        { "id": 8, "lastNames": "CRUZ NUNEZ", "firstNames": "JOSHUA PATRICIO", "username": "josh.cruz" },
+        { "id": 9, "lastNames": "SAAVEDRA MARQUEZ", "firstNames": "NICOLAS HANSS", "username": "nico.saavedram" }
+      ]
+    },
+    {
+      "id": 5,
+      "repository": "https://github.com/Giannela10/Aethergate.git",
+      "participants": [
+        { "id": 10, "lastNames": "GAJARDO SALINAS", "firstNames": "GIANNELA SCARLETH ANTONELLA", "username": "gi.gajardo" },
+        { "id": 11, "lastNames": "HERNANDEZ DE LA ROSA", "firstNames": "NICOLAS ALBERTO", "username": "nico.hernandezd" }
+      ]
+    },
+    {
+      "id": 6,
+      "repository": "https://github.com/jjmmcode/CAPSTONE-G6-2026-02",
+      "participants": [
+        { "id": 12, "lastNames": "MILLAN ORELLANA", "firstNames": "FELIPE IGNACIO", "username": "fe.millan" },
+        { "id": 13, "lastNames": "LONCON SALINAS", "firstNames": "YERKO ANDRE", "username": "yer.loncon" },
+        { "id": 14, "lastNames": "MEDINA MORALES", "firstNames": "JOEL", "username": "joe.medina" }
+      ]
+    },
+    {
+      "id": 7,
+      "repository": "https://github.com/giandst/capstone-docs",
+      "participants": [
+        { "id": 17, "lastNames": "DE SINIS TUDOR MUTIS", "firstNames": "GIANLUCA", "username": "gi.desinistudor" },
+        { "id": 18, "lastNames": "QUINENAO IBARRA", "firstNames": "GERALD ANTONIO", "username": "ge.quinenao" },
+        { "id": 19, "lastNames": "REYES BLANCO", "firstNames": "NICOLAS ANDRES", "username": "ni.reyesb" }
+      ]
+    },
+    {
+      "id": 8,
+      "repository": "https://github.com/AndhreCruz/capstone-007v-grupo8.git",
+      "participants": [
+        { "id": 20, "lastNames": "CRUZ SANCHEZ", "firstNames": "ANDHRE EDUARDO", "username": "and.cruz" },
+        { "id": 21, "lastNames": "KACIC GONZALEZ", "firstNames": "NICOLAS ANDRES", "username": "ni.kacic" },
+        { "id": 22, "lastNames": "POLANCO", "firstNames": "SEBASTIAN" }
+      ]
+    },
+    {
+      "id": 9,
+      "repository": "https://github.com/Adrian-Najera-Dev/Vigia-hh",
+      "participants": [
+        { "id": 23, "lastNames": "LLANQUINAO AVILA", "firstNames": "RODRIGO ANDRES", "username": "rod.llanquinao" },
+        { "id": 24, "lastNames": "GAMBOA", "firstNames": "" },
+        { "id": 25, "lastNames": "NAJERA", "firstNames": "" }
+      ]
+    },
+    {
+      "id": 10,
+      "repository": "https://github.com/Dieegggo/Capstone",
+      "participants": [
+        { "id": 26, "lastNames": "DOVERIS RIQUELME", "firstNames": "MARIO HUGO", "username": "ma.doveris" },
+        { "id": 27, "lastNames": "HEREDIA SOLER", "firstNames": "ADRIAN ANDRES", "username": "ad.heredia" },
+        { "id": 28, "lastNames": "TORRES NAVARRO", "firstNames": "DIEGO ENZO", "username": "dieg.torresn" }
+      ]
+    },
+    {
+      "id": 11,
+      "repository": "https://github.com/IGNACIOb21/CAPSTONE-Proyecto_de_reciclage_grupo_11",
+      "participants": [
+        { "id": 15, "lastNames": "ZUNIGA OLIVARES", "firstNames": "NICOLAS ANDRES", "username": "ni.zunigao" },
+        { "id": 16, "lastNames": "AGUILAR", "firstNames": "IGNACIO" }
+      ]
+    },
+    {
+      "id": 12,
+      "repository": "https://github.com/Temism/Capstone12",
+      "participants": [
+        { "id": 29, "lastNames": "AVILA LEAL", "firstNames": "GUSTAVO", "username": "gu.avila" },
+        { "id": 30, "lastNames": "PALMA", "firstNames": "MARCO" }
+      ]
+    }
+  ],
   "allowedExtraUnder": [
+    "Fase 1/Evidencias Individuales",
+    "Fase 1/Evidencias Grupales",
+    "Fase 2/Evidencias Individuales",
+    "Fase 2/Evidencias Grupales",
     "Fase 2/Evidencias de documentación",
-    "Fase 2/Evidencias de sistema/Aplicación",
-    "Fase 2/Evidencias de sistema/Base de datos"
+    "Fase 2/Evidencias de sistema",
+    "Fase 3/Evidencias Individuales",
+    "Fase 3/Evidencias Grupales",
+    "Fase 3/Evidencias Proyecto",
+    "Bot",
+    "README.md",
+    "index.html",
+    "index.json"
   ],
   "tree": [
     {
@@ -16,14 +130,17 @@
           "children": [
             {
               "path": "Apellido_Nombre_1.1_APT122_AutoevaluacionCompetenciasFase1.docx",
+              "perParticipant": true,
               "type": "file"
             },
             {
               "path": "Apellido_Nombre_1.2_APT122_DiarioReflexionFase1.docx",
+              "perParticipant": true,
               "type": "file"
             },
             {
               "path": "Apellido_Nombre_1.3_APT122_AutoevaluacionFase1.docx",
+              "perParticipant": true,
               "type": "file"
             }
           ]
@@ -37,7 +154,7 @@
               "type": "file"
             },
             {
-              "path": "1.5_GuiaEstudiante_Fase 1_Definicion Proyecto APT.docx",
+              "path": "1.5_GuiaEstudiante_Fase 1_Definicion Proyecto APT (Español).docx",
               "type": "file"
             },
             {
@@ -62,6 +179,7 @@
           "children": [
             {
               "path": "Apellido_Nombre_2.1_APT122_DiarioReflexionFase2.docx",
+              "perParticipant": true,
               "type": "file"
             }
           ]
@@ -71,7 +189,7 @@
           "type": "directory",
           "children": [
             {
-              "path": "2.4_GuiaEstudiante_Fase 2_DesarrolloProyecto APT.docx",
+              "path": "2.4_GuiaEstudiante_Fase 2_DesarrolloProyecto APT (Español).docx",
               "type": "file"
             },
             {
@@ -139,6 +257,7 @@
           "children": [
             {
               "path": "Apellido_Nombre_3.1_APT122_DiarioReflexionFase3.docx",
+              "perParticipant": true,
               "type": "file"
             }
           ]
@@ -168,40 +287,6 @@
           ]
         }
       ]
-    },
-    {
-      "path": "Bot",
-      "type": "directory",
-      "children": [
-        {
-          "path": "app.mjs",
-          "type": "file"
-        },
-        {
-          "path": "auditor.mjs",
-          "type": "file"
-        },
-        {
-          "path": "auditor.test.mjs",
-          "type": "file"
-        },
-        {
-          "path": "styles.css",
-          "type": "file"
-        }
-      ]
-    },
-    {
-      "path": "README.md",
-      "type": "file"
-    },
-    {
-      "path": "index.html",
-      "type": "file"
-    },
-    {
-      "path": "index.json",
-      "type": "file"
     }
   ]
 }

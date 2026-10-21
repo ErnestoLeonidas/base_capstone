@@ -8,21 +8,34 @@
   </head>
   <body>
     <main>
-      <section class="audit-box" aria-label="Auditor CAPSTONE APT122">
+      <header class="page-header">
+        <p class="eyebrow">APT122 · CAPSTONE</p>
+        <h1>Auditor de evidencias</h1>
+      </header>
+
+      <section class="audit-box" aria-labelledby="audit-title">
+        <h2 id="audit-title">Repositorio del grupo</h2>
         <form class="audit-form" id="audit-form">
-          <label>
-            <span class="sr-only">URL del repositorio GitHub</span>
+          <label for="group-id">Grupo</label>
+          <select id="group-id" name="group-id">
+            <option value="">Seleccionar o detectar por URL</option>
+          </select>
+          <ul class="roster" id="roster" aria-label="Participantes del grupo" hidden></ul>
+          <label for="repo-url">URL de GitHub</label>
+          <div class="form-controls">
             <input
               id="repo-url"
               name="repo-url"
               type="url"
               placeholder="https://github.com/usuario/repositorio"
+              autocomplete="url"
+              aria-describedby="message"
               required
             >
-          </label>
-          <button class="sr-only" type="submit">Revisar</button>
+            <button type="submit">Revisar</button>
+          </div>
         </form>
-        <p class="message" id="message" role="status"></p>
+        <p class="message" id="message" role="status" aria-live="polite"></p>
       </section>
 
       <section class="report" id="report" aria-live="polite" hidden></section>

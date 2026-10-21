@@ -1,18 +1,22 @@
 import {
-  auditRepository,
   flattenExpectedTree,
   normalizePath
 } from './auditor.mjs';
+import { auditGroupRepository, findGroupByRepository } from './participants.mjs';
 
 const form = document.querySelector('#audit-form');
 const repoUrlInput = document.querySelector('#repo-url');
 const submitButton = form.querySelector('button');
 const message = document.querySelector('#message');
 const report = document.querySelector('#report');
+const groupSelect = document.querySelector('#group-id');
+const roster = document.querySelector('#roster');
 
 let expectedEntries = [];
 let allowedExtraUnder = [];
+let groups = [];
 
+setFormDisabled(true);
 init();
 
 async function init() {
@@ -25,11 +29,48 @@ async function init() {
     const reference = await response.json();
     expectedEntries = flattenExpectedTree(reference.tree);
     allowedExtraUnder = reference.allowedExtraUnder ?? [];
+    groups = reference.groups ?? [];
+    if (!groups.length) throw new Error('No hay grupos registrados en la configuración.');
+    for (const group of groups) {
+      const option = document.createElement('option');
+      option.value = String(group.id);
+      option.textContent = `Grupo ${group.id} · ${group.participants.length} participantes`;
+      groupSelect.append(option);
+    }
+    setFormDisabled(false);
   } catch (error) {
     showMessage(error.message, true);
     setFormDisabled(true);
   }
 }
+
+function selectedGroup() {
+  return groups.find(group => String(group.id) === groupSelect.value);
+}
+
+function updateRoster() {
+  const group = selectedGroup();
+  roster.hidden = !group;
+  roster.innerHTML = group ? group.participants.map(person =>
+    `<li>${escapeHtml(`${person.firstNames || '(Nombre pendiente)'} ${person.lastNames}`)}</li>`
+  ).join('') : '';
+  report.hidden = true;
+  showMessage('');
+}
+
+groupSelect.addEventListener('change', () => {
+  const group = selectedGroup();
+  if (group && (!repoUrlInput.value.trim() || findGroupByRepository(groups, repoUrlInput.value))) {
+    repoUrlInput.value = group.repository;
+  }
+  updateRoster();
+});
+
+repoUrlInput.addEventListener('input', () => {
+  const group = findGroupByRepository(groups, repoUrlInput.value.trim());
+  groupSelect.value = group ? String(group.id) : '';
+  updateRoster();
+});
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -40,10 +81,13 @@ form.addEventListener('submit', async (event) => {
 
   try {
     const repo = parseGitHubUrl(repoUrlInput.value);
+    const group = findGroupByRepository(groups, repoUrlInput.value.trim()) ?? selectedGroup();
+    if (!group) throw new Error('Selecciona el grupo correspondiente a este repositorio.');
+    groupSelect.value = String(group.id);
     const actualEntries = await fetchRepositoryTree(repo);
-    const audit = auditRepository(expectedEntries, actualEntries, { allowedExtraUnder });
+    const audit = auditGroupRepository(expectedEntries, actualEntries, group, { allowedExtraUnder });
 
-    renderReport(audit, repo);
+    renderReport(audit, repo, group);
     showMessage('');
   } catch (error) {
     showMessage(error.message, true);
@@ -53,6 +97,7 @@ form.addEventListener('submit', async (event) => {
 });
 
 function setFormDisabled(disabled) {
+  groupSelect.disabled = disabled;
   repoUrlInput.disabled = disabled;
   submitButton.disabled = disabled;
 }
@@ -66,7 +111,7 @@ function parseGitHubUrl(value) {
     throw new Error('Ingresa una URL valida de GitHub.');
   }
 
-  if (url.hostname !== 'github.com') {
+  if (url.hostname !== 'github.com' || !['http:', 'https:'].includes(url.protocol)) {
     throw new Error('La URL debe pertenecer a github.com.');
   }
 
@@ -77,7 +122,7 @@ function parseGitHubUrl(value) {
 
   return {
     owner,
-    name: name.replace(/\.git$/, '')
+    name: name.replace(/\.git$/i, '')
   };
 }
 
@@ -100,14 +145,15 @@ async function fetchRepositoryTree(repo) {
 
   const treeInfo = await treeResponse.json();
   if (treeInfo.truncated) {
-    showMessage('GitHub entrego un arbol truncado; el reporte puede estar incompleto.');
+    throw new Error('GitHub entregó una lista incompleta de archivos. No es posible generar un reporte confiable.');
   }
 
   return treeInfo.tree
     .filter((entry) => entry.type === 'tree' || entry.type === 'blob')
     .map((entry) => ({
       path: normalizePath(entry.path),
-      type: entry.type === 'tree' ? 'directory' : 'file'
+      type: entry.type === 'tree' ? 'directory' : 'file',
+      size: entry.size
     }));
 }
 
@@ -123,16 +169,15 @@ function throwGitHubError(response) {
   throw new Error(`GitHub respondio con estado ${response.status}.`);
 }
 
-function renderReport(audit, repo) {
+function renderReport(audit, repo, group) {
   const { summary } = audit;
-  const state = summary.missing === 0 && summary.typeMismatches === 0 && summary.extra === 0
-    ? 'Cumple'
-    : 'Requiere cambios';
+  const needsChanges = summary.missing + summary.typeMismatches + summary.extra + summary.duplicates + summary.invalid > 0;
+  const state = needsChanges ? 'Requiere cambios' : summary.pending ? 'Identificación pendiente' : 'Cumple mínimos';
 
   report.hidden = false;
   report.innerHTML = `
     <header class="report-header">
-      <p>${escapeHtml(repo.owner)}/${escapeHtml(repo.name)}</p>
+      <p>Grupo ${group.id} · ${escapeHtml(repo.owner)}/${escapeHtml(repo.name)}</p>
       <strong>${state}</strong>
     </header>
     <div class="summary">
@@ -140,13 +185,41 @@ function renderReport(audit, repo) {
       <span><b>${summary.missing}</b> faltantes</span>
       <span><b>${summary.extra}</b> extras</span>
       <span><b>${summary.typeMismatches}</b> tipos incorrectos</span>
+      <span><b>${summary.duplicates}</b> entregas duplicadas</span>
+      <span><b>${summary.invalid}</b> archivos inválidos</span>
+      <span><b>${summary.pending}</b> identificaciones pendientes</span>
     </div>
-    ${renderList('Faltantes', audit.missing, 'No hay elementos faltantes.')}
+    ${renderIndividuals(audit.individuals)}
+    ${renderList('Evidencias y carpetas comunes faltantes', audit.missing.filter(entry => !entry.participantId), 'No hay elementos comunes faltantes.')}
     ${renderList('Tipos incorrectos', audit.typeMismatches.map(({ expected, actual }) => ({
       path: `${expected.path} debe ser ${expected.type}, pero figura como ${actual.type}.`
     })), 'No hay tipos incorrectos.')}
     ${renderList('Fuera de estructura', audit.extra, 'No hay archivos o carpetas fuera de estructura.')}
+    ${renderList('Observaciones individuales', audit.individualWarnings.map(entry => ({
+      path: `${warningLabels[entry.reason]}: ${entry.path}`
+    })), 'No hay archivos individuales sin identificar.')}
   `;
+}
+
+const statusLabels = {
+  correct: 'Presente', missing: 'Faltante', pending: 'Nombre pendiente',
+  duplicate: 'Duplicado', invalid: 'Vacío o tipo incorrecto'
+};
+const warningLabels = {
+  template: 'Plantilla sin personalizar', ambiguous: 'Identidad ambigua', unassigned: 'Participante no identificado'
+};
+
+function renderIndividuals(individuals) {
+  return `<section class="report-list"><h2>Evidencias por participante</h2>${individuals.map(person => {
+    const complete = person.documents.filter(doc => doc.status === 'correct').length;
+    return `<details class="participant-report" ${complete < person.documents.length ? 'open' : ''}>
+      <summary><span>${escapeHtml(person.displayName)}</span><b>${complete}/${person.documents.length}</b></summary>
+      <ul>${person.documents.map(doc => `<li class="document-row">
+        <span class="document-status status-${doc.status}">${statusLabels[doc.status]}</span>
+        <span>${escapeHtml(doc.path)}${doc.matches.length ? `<small>${doc.matches.map(escapeHtml).join('<br>')}</small>` : ''}</span>
+      </li>`).join('')}</ul>
+    </details>`;
+  }).join('')}</section>`;
 }
 
 function renderList(title, entries, emptyMessage) {

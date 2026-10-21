@@ -13,6 +13,7 @@ export function flattenExpectedTree(nodes, parentPath = '') {
       path,
       type: node.type,
       required: node.required !== false,
+      perParticipant: node.perParticipant === true,
       gitkeepForEmptyDirectory: Boolean(node.gitkeepForEmptyDirectory)
     };
     const children = Array.isArray(node.children)
